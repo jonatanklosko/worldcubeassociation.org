@@ -59,6 +59,41 @@ en:
     magic: "Rubik's Magic"
     mmagic: "Master Magic"
     333mbo: "Rubik's Cube: Multiple blind old style"
+  #context: Round name
+  rounds:
+    "0":
+      name: "Qualification round"
+      cellName: "Qualification"
+    "1":
+      name: "First round"
+      cellName: "First"
+    "2":
+      name: "Second round"
+      cellName: "Second"
+    "3":
+      name: "Semi Final"
+      cellName: "Semi Final"
+    "b":
+      name: "B Final"
+      cellName: "B Final"
+    "c":
+      name: "Combined Final"
+      cellName: "Combined Final"
+    "d":
+      name: "Combined First round"
+      cellName: "Combined First"
+    "e":
+      name: "Combined Second round"
+      cellName: "Combined Second"
+    "f":
+      name: "Final"
+      cellName: "Final"
+    "g":
+      name: "Combined Third round"
+      cellName: "Combined Third"
+    "h":
+      name: "Combined qualification"
+      cellName: "Combined qualification"
   #context: Common word used in multiple places on the website
   common:
     continent: "Continent"
@@ -586,10 +621,11 @@ en:
     greeting: "Hi, %{name}!"
     please_fix_profile_html: "In order to register for this %{comp}, you must fix the following problems with your %{profile}:"
     can_register: "You can register for %{comp} below."
+    check_registration_information: "Please check the information about registration to find out if you need to do something else, like paying a registration fee."
     have_registered: "You have registered for %{comp}. You can see your registration information below."
     entry_fee: "The entry fee is "
     contact_organizer: "Contact the organizer if you wish to make a change."
-    waiting_list: "You are currently number %{i} of %{n} on the waiting list."
+    waiting_list: "Your registration is pending. For approval, you may need to pay a registration fee. Check the competition website for details."
     accepted: "Your registration has been accepted!"
     preferred_events_prompt_html: "To speed up registration in the future, you can set your preferred events %{link}."
   #context: Key used when managing competitions
@@ -972,7 +1008,7 @@ en:
       title: "Step 3: Match the scrambles with the results"
       content_html: "The WCA Workbook Assistant automatically links the scrambles with the rounds that were held. In some cases, like when multiple scramble files were generated, the selection needs to be done manually because there are several possible options."
       content2_html: "Manually selecting scrambles can be done by double clicking the <em>Scrambles</em> cell in the sheet overview panel."
-      content3_html: "It is only possible to select one round from the scramble files for each round for which there are results. If a situation arises where scrambles for a single round where generated as separate rounds in TNoodle, you can used the <em>Edit groups...</em> button to edit the groups in the scramble files and move them from one round to another or delete them."
+      content3_html: "It is only possible to select one round from the scramble files for each round for which there are results. If a situation arises where scrambles for a single round were generated as separate rounds in TNoodle, you can use the <em>Edit groups...</em> button to edit the groups in the scramble files and move them from one round to another or delete them."
       content4_html: "In this example, an extra set scrambles was generated to have two groups for the first round of skewb instead of one group."
       content5_html: "The scrambles for the additional group can be dragged and dropped on the round that was generated originally. This moves the two groups together in one round."
     step4:
