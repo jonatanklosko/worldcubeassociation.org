@@ -68,6 +68,62 @@ zh-CN:
     mmagic: 十二板
     #original_hash: c6ad2af
     333mbo: 旧多盲
+  rounds:
+    '0':
+      #original_hash: 4d618bb
+      name: 资格赛
+      #original_hash: 2ffe44e
+      cellName: 资格赛
+    '1':
+      #original_hash: 1e725b6
+      name: 初赛
+      #original_hash: 916a78d
+      cellName: 初赛
+    '2':
+      #original_hash: 985c8d0
+      name: 复赛
+      #original_hash: 2a4bcae
+      cellName: 复赛
+    '3':
+      #original_hash: e2f74d2
+      name: 半决赛
+      #original_hash: e2f74d2
+      cellName: 半决赛
+    b:
+      #original_hash: 327c999
+      name: B组决赛
+      #original_hash: 327c999
+      cellName: B组决赛
+    c:
+      #original_hash: b2d26f4
+      name: 组合制决赛
+      #original_hash: b2d26f4
+      cellName: 组合制决赛
+    d:
+      #original_hash: c6136b1
+      name: 组合制初赛
+      #original_hash: dffa9ea
+      cellName: 组合制初赛
+    e:
+      #original_hash: 659c53f
+      name: 组合制复赛
+      #original_hash: b6e1e1c
+      cellName: 组合制复赛
+    f:
+      #original_hash: 672b22c
+      name: 决赛
+      #original_hash: 672b22c
+      cellName: 决赛
+    g:
+      #original_hash: e861dcf
+      #original_hash: 4c66ad0
+      name: 组合制半决赛
+      #original_hash: 86f4b05
+      #original_hash: 4c66ad0
+      cellName: 组合制半决赛
+    h:
+      name: 组合制资格赛
+      cellName: 组合制资格赛
   common:
     #original_hash: 2513cf0
     continent: 洲
@@ -710,9 +766,9 @@ zh-CN:
       #original_hash: 29e25b5
       have_wca_id_html: '你的WCA ID是%{link_id}。'
       cannot_edit:
-        #original_hash: b98c0cf
+        #original_hash: 8501c74
         msg: >-
-          由于%{reason}你无法变更你的姓名、生日、性别以及地区。如有需要请联系你的<a
+          你无法变更你的姓名、生日、性别以及地区。原因如下：%{reason}。如有需要请联系你的<a
           href='%{delegate_url}'>代表</a>。
         reason:
           #original_hash: 370ff12
@@ -857,6 +913,10 @@ zh-CN:
       title: '%{comp}的报名列表'
       #original_hash: 5301648
       edit: 编辑
+      #original_hash: 0ab725c
+      country_plural:
+        zero: '0'
+        other: '%{count}个国家/地区'
       #original_hash: 1feee0e
       export_csv: 导出到CSV
       #original_hash: 84add5b
@@ -914,14 +974,16 @@ zh-CN:
     please_fix_profile_html: '要报名%{comp}，首先得解决你%{profile}的问题：'
     #original_hash: 855ca9c
     can_register: '你可以在下面报名%{comp}。'
+    #original_hash: 4167ed7
+    check_registration_information: 请查看比赛信息页的报名部分，你可能需要支付报名费以通过审核。
     #original_hash: ea2b586
     have_registered: '你已经报名了%{comp}。可以在下面查看你的报名信息。'
     #original_hash: 4d966e0
     entry_fee: 报名费是
     #original_hash: 3c9141f
     contact_organizer: 如果你想变更报名信息请联系主办方。
-    #original_hash: 06d52b5
-    waiting_list: '当前候选列表有%{n}个，你是第%{i}个。'
+    #original_hash: 59354fd
+    waiting_list: 你的报名正等待审核。请查看比赛官网详情以确认是否需要支付报名费等流程。
     #original_hash: 58b1a3c
     accepted: 你的报名已通过！
     #original_hash: 4cf01a2
@@ -974,6 +1036,10 @@ zh-CN:
       details: 详情
       #original_hash: 2e8a57c
       website: 网站
+      #original_hash: 680567f
+      organizer_plural:
+        zero: 主办方
+        other: 主办方
       #original_hash: 6afa61e
       delegate:
         zero: WCA代表
@@ -1018,6 +1084,8 @@ zh-CN:
         in_progress: 进行中的比赛
         #original_hash: 9e66032
         past: '%{year}年的比赛'
+        #original_hash: f628f0e
+        past_all: 所有比赛
         #original_hash: cbe8a54
         recent: '过去%{count}天的比赛'
         #original_hash: 914742f
@@ -1034,8 +1102,8 @@ zh-CN:
           posted: 成绩已公示！
           #original_hash: 89bcc37
           starts_in: '%{days}后开始'
-        #original_hash: a418217
-        search: 名字、城市、地点、国家或者月份
+        #original_hash: ccd2db9
+        search: 名字或者城市
         #original_hash: 3bc8082
         recent: '过去%{count}天'
       #original_hash: 8b09d74
@@ -1103,7 +1171,7 @@ zh-CN:
       #original_hash: 8ebebca
       coordinates: 坐标
     errors:
-      #original_hash: 83795c3
+      #original_hash: f7ef9f6
       invalid_name_message: '必须以年份结尾，并且只能包含数字、字母、标点（-&.:''）和空格'
       #original_hash: 8e8f765
       cannot_manage: 无法管理比赛。
@@ -1146,11 +1214,15 @@ zh-CN:
       #original_hash: e6e096a
       competition_was: '比赛是%{n_days}前的。'
     nearby_competitions:
+      #original_hash: 241801a
+      competitions:
+        zero: 没有比赛
+        other: '%{count}场比赛'
       #original_hash: e3528ec
       label: '临近的比赛（%{days}天%{kms}千米内）'
       #original_hash: 3446062
       label_admin: '过去%{days}天'
-      #original_hash: 14276ae
+      #original_hash: 07a1cf0
       nearby_admin: '%{x_competitions}在%{kms}千米%{days}天内。'
       #original_hash: feefb46
       no_comp_nearby: 没有临近比赛！
@@ -1196,7 +1268,7 @@ zh-CN:
         #original_hash: aaefdb6
         by_person: 按选手
         #original_hash: 4b631f6
-        info: 信息
+        info: 基本信息
         #original_hash: 5301648
         edit: 编辑
         #original_hash: d8cdb57
@@ -1226,6 +1298,40 @@ zh-CN:
       round: 轮次
       #original_hash: 709a232
       name: 姓名
+  competition_tabs:
+    headers:
+      #original_hash: 2a4d562
+      tabs: 标签
+      #original_hash: 709a232
+      name: 名字
+    form_elements:
+      #original_hash: 90f8dcb
+      create_button: 创建标签
+      #original_hash: 8d5b6f9
+      goto_button: '前往%{tab_name}标签'
+      #original_hash: 6f23a36
+      new_tab: 新标签
+      #original_hash: 5301648
+      edit: 编辑
+      #original_hash: fb91e24
+      update: 更新
+      #original_hash: f6fdbe4
+      delete: 删除
+      #original_hash: 14e49c1
+      confirm_delete: '确定要删除%{tab_name}标签吗？'
+      #original_hash: ce1bf0b
+      back_to_tabs: 返回标签管理
+    new:
+      #original_hash: 73ed8c2
+      new_tab_title: '为%{comp_name}创建新标签'
+    index:
+      #original_hash: a857eb4
+      tabs_list_title: 管理标签
+      #original_hash: 40f9491
+      tabs_introduction_text: 可以在此处增改标签，他们将显示在比赛基本信息页。
+    edit:
+      #original_hash: 5f1f5b8
+      edit_tab_title: '编辑%{tab_name}标签'
   notifications:
     #original_hash: 10bcdbd
     connect_wca_id: 关联WCA ID到你的账号！
@@ -1510,7 +1616,7 @@ zh-CN:
       content_html: WCA成绩表助手会自动将打乱和对应的轮次关联。有些情况下需要手动关联，比如有多份打乱时。
       #original_hash: e869c1e
       content2_html: 双击<em>Scrambles</em>格来手动选择打乱。
-      #original_hash: a42bae2
+      #original_hash: 8f4fdfd
       content3_html: >-
         一个轮次只能有一轮的打乱。如果某个轮次生成了多分打乱，你可以使用<em>Edit
         groups...</em>按钮来编辑打乱分组，将涉及的打乱移动到一个轮次里。
