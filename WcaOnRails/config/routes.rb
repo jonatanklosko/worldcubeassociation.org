@@ -129,23 +129,29 @@ Rails.application.routes.draw do
 
   patch '/update_locale/:locale' => 'application#update_locale', as: :update_locale
 
+  # namespace :api do
+  #   get '/', to: redirect('/api/v0')
+  #   namespace :v0 do
+  #     get '/' => 'api#help'
+  #     get '/me' => 'api#me'
+  #     get '/auth/results' => 'api#auth_results'
+  #     get '/scramble-program' => 'api#scramble_program'
+  #     get '/search' => 'api#omni_search'
+  #     get '/search/posts' => 'api#posts_search'
+  #     get '/search/competitions' => 'api#competitions_search'
+  #     get '/search/users' => 'api#users_search'
+  #     get '/search/regulations' => 'api#regulations_search'
+  #     get '/users/:id' => 'api#show_user_by_id', constraints: { id: /\d+/ }
+  #     get '/users/:wca_id' => 'api#show_user_by_wca_id'
+  #     get '/competitions' => 'api#competitions'
+  #     resources :competitions, only: [:show]
+  #   end
+  # end
+
   namespace :api do
-    get '/', to: redirect('/api/v0')
-    namespace :v0 do
-      get '/' => 'api#help'
-      get '/me' => 'api#me'
-      get '/auth/results' => 'api#auth_results'
-      get '/scramble-program' => 'api#scramble_program'
-      get '/search' => 'api#omni_search'
-      get '/search/posts' => 'api#posts_search'
-      get '/search/competitions' => 'api#competitions_search'
-      get '/search/users' => 'api#users_search'
-      get '/search/regulations' => 'api#regulations_search'
-      get '/users/:id' => 'api#show_user_by_id', constraints: { id: /\d+/ }
-      get '/users/:wca_id' => 'api#show_user_by_wca_id'
-      get '/competitions' => 'api#competitions'
-      get '/delegates' => 'api#delegates'
-      resources :competitions, only: [:show]
+    namespace :v1 do
+      resources :competitions, only: [:index, :show]
+      resources :users, only: [:index, :show]
     end
   end
 end

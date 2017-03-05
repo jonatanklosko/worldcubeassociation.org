@@ -72,7 +72,7 @@ class CompetitionsController < ApplicationController
     @present_selected = params[:state] == "present"
     @recent_selected = params[:state] == "recent"
 
-    @years = ["all years"] + Competition.where(showAtAll: true).pluck(:year).uniq.select { |y| y <= Date.today.year }.sort!.reverse!
+    @years = ["all years"] + Competition.visible.pluck(:year).uniq.select { |y| y <= Date.today.year }.sort!.reverse!
 
     if params[:delegate].present?
       delegate = User.find(params[:delegate])
@@ -80,7 +80,7 @@ class CompetitionsController < ApplicationController
     else
       @competitions = Competition
     end
-    @competitions = @competitions.includes(:country).where(showAtAll: true).order(:start_date)
+    @competitions = @competitions.includes(:country).visible.order(:start_date)
 
     if @present_selected
       @competitions = @competitions.not_over

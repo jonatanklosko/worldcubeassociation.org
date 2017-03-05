@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :wca_id, :gender, :country_iso2, :delegate_status, :created_at, :updated_at
+  attributes :id, :wca_id, :name, :gender, :country_iso2, :delegate_status, :created_at, :updated_at
 
   attribute :avatar do
     {
@@ -18,5 +18,5 @@ class UserSerializer < ActiveModel::Serializer
     end
   end
 
-  link(:self) { users_url object }
+  link(:self) { api_v1_user_url object }
 end

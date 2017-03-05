@@ -8,5 +8,5 @@ class CompetitionSerializer < ActiveModel::Serializer
   has_many :delegates
   has_many :organizers
 
-  link(:self) { competition_url object } # Note should lead to /api competitions instead
+  link(:self) { api_v1_competition_url object }
 end

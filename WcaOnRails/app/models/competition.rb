@@ -46,6 +46,7 @@ class Competition < ApplicationRecord
       join Events e#{event_id} ON e#{event_id}.id = ce#{event_id}.event_id",
     ).where("e#{event_id}.id = :event_id", event_id: event_id)
   }
+  scope :visible, -> { where(showAtAll: true) }
 
   CLONEABLE_ATTRIBUTES = %w(
     cityName
@@ -756,7 +757,7 @@ class Competition < ApplicationRecord
   end
 
   def self.search(query, params: {})
-    competitions = Competition.where(showAtAll: true)
+    competitions = Competition.visible
 
     if params[:country_iso2].present?
       country = Country.find_by_iso2(params[:country_iso2])
