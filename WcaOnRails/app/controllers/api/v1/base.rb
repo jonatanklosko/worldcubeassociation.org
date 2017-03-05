@@ -9,16 +9,16 @@ class Api::V1::Base < ApplicationController
   PAGINATION_PAGE_SIZE = 20
 
   rescue_from ApiException do |exception|
-    render json: exception.data
+    render json: { errors: [exception.data] }, status: exception.data[:status]
   end
 
   def ensure_found(object)
-    raise ApiException.new(errors(not_found)) unless object
+    raise ApiException.new(not_found) unless object
   end
 
   def parameter(name, options)
     if options[:required] && params[:name].blank?
-      raise ApiException.new(errors(bad_parameter("The `#{name}` parameter is missing.")))
+      raise ApiException.new(bad_parameter("The `#{name}` parameter is missing."))
     end
     if options[:default]
       _params = params
@@ -29,10 +29,6 @@ class Api::V1::Base < ApplicationController
   end
 
   private
-    def errors(*errors)
-      { errors: errors }
-    end
-
     def bad_parameter(detail)
       { status: 400, title: "Invalid parameter", detail: detail }
     end
