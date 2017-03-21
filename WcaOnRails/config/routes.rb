@@ -151,7 +151,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :competitions, only: [:index, :show] do
-        resources :registrations, only: [:index]
+        resources :registrations, only: [:index, :show]
       end
       resources :users, only: [:index, :show]
       resources :teams, only: [:index, :show]

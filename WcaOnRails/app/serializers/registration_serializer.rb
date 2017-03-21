@@ -5,5 +5,5 @@ class RegistrationSerializer < ActiveModel::Serializer
   has_one :competition
   has_many :events
 
-  link(:self) { api_v1_competition_registrations_url object.competition }
+  link(:self) { api_v1_competition_registration_url object.competition, object }
 end
