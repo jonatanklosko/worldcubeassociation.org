@@ -6,8 +6,9 @@ class Api::V1::CompetitionsController < Api::V1::Base
   end
 
   def show
-    competition = Competition.visible.includes(:delegates, :organizers).find_by(id: params[:id])
+    allow_including :delegates, :organizers
+    competition = Competition.visible.includes(params[:include]).find_by(id: params[:id])
     ensure_found competition
-    render json: competition, include: [:delegates, :organizers]
+    render json: competition, include: params[:include]
   end
 end
