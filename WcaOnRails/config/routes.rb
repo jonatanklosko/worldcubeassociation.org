@@ -154,6 +154,7 @@ Rails.application.routes.draw do
         resources :registrations, only: [:index]
       end
       resources :users, only: [:index, :show]
+      resources :teams, only: [:index, :show]
     end
   end
 end
