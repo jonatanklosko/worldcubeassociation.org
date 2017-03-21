@@ -2,7 +2,9 @@ class CompetitionSerializer < ActiveModel::Serializer
   attributes :id, :name, :website
   attribute :cellName, key: :short_name
   attribute :cityName, key: :city
-  attribute :country_iso2 { object.country.iso2 }
+  attribute :country_iso2 do
+    object.country.iso2
+  end
   attributes :start_date, :end_date
 
   has_many :delegates
