@@ -9,14 +9,7 @@ class UserSerializer < ActiveModel::Serializer
     }
   end
 
-  attribute :teams do
-    object.current_team_members.includes(:team).map do |team_member|
-      {
-        friendly_id: team_member.team.friendly_id,
-        leader: team_member.team_leader?,
-      }
-    end
-  end
+  has_many :teams
 
   link(:self) { api_v1_user_url object }
 end
