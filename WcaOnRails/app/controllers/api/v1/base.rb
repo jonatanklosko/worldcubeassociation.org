@@ -28,13 +28,6 @@ class Api::V1::Base < ApplicationController
     end
   end
 
-  def allow_including(*relations)
-    if params[:include].present?
-      params[:include] = params[:include].split(',')
-      params[:include] = params[:include] & relations.map(&:to_s)
-    end
-  end
-
   private
     def bad_parameter(detail)
       { status: 400, title: "Invalid parameter", detail: detail }
