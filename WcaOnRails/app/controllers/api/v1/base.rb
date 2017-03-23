@@ -12,6 +12,14 @@ class Api::V1::Base < ApplicationController
     render json: { errors: [exception.data] }, status: exception.data[:status]
   end
 
+  def doorkeeper_unauthorized_render_options(error: nil)
+    { json: { status: 401, title: "Unauthorized request", datail: error.description } }
+  end
+
+  def current_user
+    User.find_by_id(doorkeeper_token&.resource_owner_id)
+  end
+
   def ensure_found(object)
     raise ApiException.new(not_found) unless object
   end

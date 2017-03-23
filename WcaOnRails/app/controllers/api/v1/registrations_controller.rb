@@ -1,13 +1,19 @@
 class Api::V1::RegistrationsController < Api::V1::Base
   def index
-    competition = Competition.find_by(id: params[:competition_id])
-    ensure_found competition
-    render json: competition.registrations.includes(:user, :events), include: params[:include]
+    render json: accessible_registrations, include: params[:include]
   end
 
   def show
-    registration = Registration.includes(:user, :events).find_by(competition_id: params[:competition_id], id: params[:id])
+    registration = accessible_registrations.find_by(id: params[:id])
     ensure_found registration
     render json: registration, include: params[:include]
   end
+
+  private
+    def accessible_registrations
+      competition = Competition.find_by(id: params[:competition_id])
+      ensure_found competition
+      registrations = competition.registrations.includes(:user, :events)
+      current_user&.can_manage_competition?(competition) ? registrations : registrations.accepted
+    end
 end

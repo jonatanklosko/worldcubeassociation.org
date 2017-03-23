@@ -149,6 +149,7 @@ Rails.application.routes.draw do
   # end
 
   namespace :api do
+    get '/', to: redirect('/api/v1')
     namespace :v1 do
       resources :competitions, only: [:index, :show] do
         resources :registrations, only: [:index, :show]
