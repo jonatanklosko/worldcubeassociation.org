@@ -154,6 +154,7 @@ Rails.application.routes.draw do
       resources :competitions, only: [:index, :show] do
         resources :registrations, only: [:index, :show]
       end
+      get '/users/me' => 'users#me'
       resources :users, only: [:index, :show]
       resources :teams, only: [:index, :show]
     end

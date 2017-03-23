@@ -1,4 +1,10 @@
 class Api::V1::UsersController < Api::V1::Base
+  before_action :doorkeeper_authorize!, only: [:me]
+
+  def me
+    render json: resource_owner
+  end
+
   def index
     parameter 'page.number', default: 1
     parameter 'page.size', default: PAGINATION_PAGE_SIZE

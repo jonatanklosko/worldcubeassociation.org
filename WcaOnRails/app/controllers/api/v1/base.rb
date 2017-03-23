@@ -18,6 +18,10 @@ class Api::V1::Base < ApplicationController
     { json: { status: 401, title: "Unauthorized request", datail: error.description } }
   end
 
+  def doorkeeper_forbidden_render_options(error: nil)
+    { json: { status: 403, title: "Access forbidden", datail: error.description } }
+  end
+
   def resource_owner
     User.find_by_id(doorkeeper_token&.resource_owner_id)&.tap do |user|
       user.doorkeeper_token = doorkeeper_token # This makes doorkeeper_token accessible within serializers.
