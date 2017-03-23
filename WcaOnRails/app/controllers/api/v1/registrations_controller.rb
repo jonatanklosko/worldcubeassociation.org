@@ -14,6 +14,6 @@ class Api::V1::RegistrationsController < Api::V1::Base
       competition = Competition.find_by(id: params[:competition_id])
       ensure_found competition
       registrations = competition.registrations.includes(:user, :events)
-      current_user&.can_manage_competition?(competition) ? registrations : registrations.accepted
+      resource_owner&.can_manage_competition?(competition) ? registrations : registrations.accepted
     end
 end
