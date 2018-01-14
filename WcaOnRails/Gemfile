@@ -13,6 +13,7 @@ gem 'rails-i18n'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'therubyracer'
+gem 'turbolinks', '~> 5.0.0'
 
 gem 'sdoc', group: :doc
 gem 'dotenv-rails', require: 'dotenv/rails-now'

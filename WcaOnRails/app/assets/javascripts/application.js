@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap-hover-dropdown
 //= require jquery.are-you-sure
@@ -54,6 +55,10 @@
 //= require jquery.slick
 //= require_self
 //= require_tree .
+
+$(document).on('turbolinks:loaded', function() {
+  $(document).ready();
+});
 
 // Global variables
 var TEXT_INPUT_DEBOUNCE_MS = 250;
